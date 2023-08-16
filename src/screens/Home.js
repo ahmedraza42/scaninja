@@ -32,8 +32,19 @@ const Home = () => {
 
   // const devices = useCameraDevices();
   // const device = devices.back;
- 
 
+  useEffect(() => {
+   getPermissions()
+  }, []);
+ 
+const getPermissions=async()=>{
+  try {
+    const cameraPermission = await Camera.requestCameraPermission();
+  } catch (error) {
+    
+  }
+  
+}
 
   const renderItem = ({item, index}) => {
     return <MemoizedRenderData item={item} />;
@@ -47,10 +58,18 @@ const Home = () => {
            }
            else{
             const cameraPermission = await Camera.requestCameraPermission();
+            console.log({cameraPermission})
              showToast("Please grant camera permission from app settings")
            }
           //  setShowCamera(true);
   }
+  renderTextBlocks = () => (
+<View style={styles.facesContainer} pointerEvents="none">
+{
+this.state.textBlocks.map(this.renderTextBlock)
+}
+</View>
+);
   const devices = useCameraDevices('wide-angle-camera')
   const device = devices.back
   const frameProcessor = useFrameProcessor((frame) => {
@@ -68,9 +87,24 @@ const Home = () => {
    
   // }, []);
   const renderOverlay = () => {
+    console.log('{block}',ocr?.result?.blocks)
     return (
       <>
-        {ocr?.result?.blocks?.map((block) => {
+      <View style={{borderWidth:1,borderColor:'green'}}>
+      <Text
+                style={{
+                  fontSize: 25,
+                  justifyContent: 'center',
+                  // textAlign: 'center',
+                  color:'green'
+                }}
+              >
+                {ocr?.result?.text}
+              </Text>
+      </View>
+      
+        {/* {ocr?.result?.blocks?.map((block) => {
+          console.log('{block}',block?.lines)
           if(block.text==''){
             return null
           }
@@ -101,15 +135,14 @@ const Home = () => {
               </Text>
             </TouchableOpacity>
           );
-        })}
+        })} */}
       </>
     );
   };
   if (device == null) return <Text>vfdfdf</Text>
-  console.log({device})
   if (showCamera) {
     return (
-      <>
+      <View style={{flex:1}}>
       <Camera
        style={[StyleSheet.absoluteFill]}
         // style={{width:'100%',height:'10%'}}
@@ -125,9 +158,17 @@ const Home = () => {
         //       )
         //   );
         // }}
-      />
+      >
       {renderOverlay()}
-    </>
+       
+      </Camera>
+      <TouchableOpacity onPress={()=>{
+          // Clipboard.setString(block.text);
+                Alert.alert(`"${ocr?.result?.text}"`);
+          }} style={{backgroundColor:'red',position:'absolute',bottom:0,width:'30%',height:'20%'}}>
+          <Text>Copy</Text>
+        </TouchableOpacity>
+      </View>
       
     )
     return (
