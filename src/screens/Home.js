@@ -46,6 +46,7 @@ const Home = () => {
             setShowCamera(true);
            }
            else{
+            const cameraPermission = await Camera.requestCameraPermission();
              showToast("Please grant camera permission from app settings")
            }
           //  setShowCamera(true);
