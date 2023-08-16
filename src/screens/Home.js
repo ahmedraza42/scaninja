@@ -90,7 +90,7 @@ this.state.textBlocks.map(this.renderTextBlock)
     console.log('{block}',ocr?.result?.blocks)
     return (
       <>
-      <View style={{borderWidth:1,borderColor:'green'}}>
+      {/* <View style={{borderWidth:1,borderColor:'green'}}>
       <Text
                 style={{
                   fontSize: 25,
@@ -101,14 +101,24 @@ this.state.textBlocks.map(this.renderTextBlock)
               >
                 {ocr?.result?.text}
               </Text>
-      </View>
+      </View> */}
       
-        {/* {ocr?.result?.blocks?.map((block) => {
-          console.log('{block}',block?.lines)
-          if(block.text==''){
-            return null
-          }
-          return (
+        {ocr?.result?.blocks?.map((block) => {
+          return(
+            block?.lines?.map((line)=>{
+            console.log('lines',line.text)
+              return(
+                <Text style={{
+                  fontSize: 25,
+                  justifyContent: 'center',
+                  // textAlign: 'center',
+                  color:'green'
+                }}>{line.text}</Text>
+              )
+          })
+          )
+          
+          {/* return (
             <TouchableOpacity
               onPress={() => {
                 Clipboard.setString(block.text);
@@ -134,8 +144,8 @@ this.state.textBlocks.map(this.renderTextBlock)
                 {block.text}
               </Text>
             </TouchableOpacity>
-          );
-        })} */}
+          ); */}
+        })}
       </>
     );
   };
@@ -164,7 +174,7 @@ this.state.textBlocks.map(this.renderTextBlock)
       </Camera>
       <TouchableOpacity onPress={()=>{
           // Clipboard.setString(block.text);
-                Alert.alert(`"${ocr?.result?.text}"`);
+                Alert.alert(`"${ocr?.result?.blocks[3]?.text} ${ocr?.result?.blocks[4].text}"`);
           }} style={{backgroundColor:'red',position:'absolute',bottom:0,width:'30%',height:'20%'}}>
           <Text>Copy</Text>
         </TouchableOpacity>
