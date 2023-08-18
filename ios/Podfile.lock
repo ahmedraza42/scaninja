@@ -408,6 +408,8 @@ PODS:
     - React-perflogger (= 0.68.2)
   - RNCAsyncStorage (1.19.2):
     - React-Core
+  - RNFS (2.20.0):
+    - React-Core
   - RNReanimated (2.9.1):
     - DoubleConversion
     - FBLazyVector
@@ -508,6 +510,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNShare (from `../node_modules/react-native-share`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -611,6 +614,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNShare:
@@ -683,7 +688,8 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: b960b687d2dfef0d3761fbb187e01812ebab8b23
   ReactCommon: 095366164a276d91ea704ce53cb03825c487a3f2
   RNCAsyncStorage: f57e929cd7757f2cb3dd8186d123c09e8281a1ad
-  RNReanimated: 3e48ab9065ac81a96f543af050a1630ebec6f10a
+  RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
+  RNReanimated: 5c8c17e26787fd8984cd5accdc70fef2ca70aafd
   RNShare: da6d90b6dc332f51f86498041d6e34211f96b630
   RNSVG: f3b60aeeaa81960e2e0536c3a9eef50b667ef3a9
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
