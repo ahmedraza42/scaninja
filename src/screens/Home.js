@@ -190,8 +190,10 @@ const Home = () => {
           frameProcessor={frameProcessor}
           device={device}
           isActive={true}>
-          {renderOverlay()}
+          
+          
         </Camera>
+        {renderOverlay()}
         <TouchableOpacity
           onPress={() => {
             setShowCamera(false);
